@@ -17,12 +17,23 @@ package com.example.android.favoritetoys;
 
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
+import android.widget.TextView;
 
 public class MainActivity extends AppCompatActivity {
 
+    TextView mToysListextView;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+        mToysListextView = (TextView)findViewById(R.id.tv_toy_names);
+        addToys();
+    }
+
+    public void addToys(){
+        String toys[] = ToyBox.getToyNames();
+        for(String toy : toys){
+            mToysListextView.append(toys + "\n\n\n");
+        }
     }
 }
