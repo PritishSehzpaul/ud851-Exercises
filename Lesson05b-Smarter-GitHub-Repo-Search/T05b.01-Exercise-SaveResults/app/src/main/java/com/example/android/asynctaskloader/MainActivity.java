@@ -33,9 +33,9 @@ import java.net.URL;
 public class MainActivity extends AppCompatActivity {
 
     // TODO (1) Create a static final key to store the query's URL
-
+    private static String githubSearchQueryURLKey = "URL";
     // TODO (2) Create a static final key to store the search's raw JSON
-
+    private static String githubSearchQueryJSONKey = "resultJSON";
     private EditText mSearchBoxEditText;
 
     private TextView mUrlDisplayTextView;
@@ -60,6 +60,10 @@ public class MainActivity extends AppCompatActivity {
         mLoadingIndicator = (ProgressBar) findViewById(R.id.pb_loading_indicator);
 
         // TODO (9) If the savedInstanceState bundle is not null, set the text of the URL and search results TextView respectively
+        if(savedInstanceState != null){
+            mSearchResultsTextView.setText(savedInstanceState.getString(githubSearchQueryURLKey));
+            mUrlDisplayTextView.setText(savedInstanceState.getString(githubSearchQueryJSONKey));
+        }
     }
 
     /**
@@ -152,6 +156,17 @@ public class MainActivity extends AppCompatActivity {
     }
 
     // TODO (3) Override onSaveInstanceState to persist data across Activity recreation
+
+    @Override
+    protected void onSaveInstanceState(Bundle outState) {
+        super.onSaveInstanceState(outState);
+        String url = mUrlDisplayTextView.getText().toString();
+        outState.putString(githubSearchQueryURLKey, url);
+
+        String resultJson = mSearchResultsTextView.getText().toString();
+        outState.putString(githubSearchQueryJSONKey, resultJson);
+    }
+
     // Do the following steps within onSaveInstanceState
     // TODO (4) Make sure super.onSaveInstanceState is called before doing anything else
 

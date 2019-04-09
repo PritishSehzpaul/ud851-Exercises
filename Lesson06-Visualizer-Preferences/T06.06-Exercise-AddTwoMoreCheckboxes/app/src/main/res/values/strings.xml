@@ -26,4 +26,8 @@
 
     <!-- Value in SharedPreferences for green color option -->
     <string name="pref_color_green_value" translatable="false">green</string>
+    <string name="show_treble_key">show_treble</string>
+    <string name="show_treble_label">Show Treble</string>
+    <string name="show_mid_range_key">show_mid_range</string>
+    <string name="show_mid_range_label">Show Mid-Range</string>
 </resources>
